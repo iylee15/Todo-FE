@@ -1,15 +1,12 @@
 import React from 'react';
 import './TodoItem.css';
 
-const TodoItem = () => {
+const TodoItem = ({todoSeq, title, description, status, date, onUpdate}) => {
 
-    let isDone;
-    // const onChangeCheckbox = () => {
-    //     // 수정하기 (checkbox 상태 변경)
-    //     // console.log("11")
-    //     onUpdate(id); // App.jsx의 함수 호출
-
-    // }
+    const onChangeCheckbox = () => {
+        // 수정하기 (checkbox 상태 변경)
+        onUpdate(todoSeq); // App.jsx의 함수 호출
+    }
 
     // 삭제 클릭
     // const onClickDelete = () => {
@@ -18,9 +15,12 @@ const TodoItem = () => {
 
     return (
         <div className='TodoItem'>
-            <input type='checkbox' checked = {isDone} />
-            <div className='content'></div>
-            <div className='date'></div>
+            <input type='checkbox' checked = {status} onChange={onChangeCheckbox}/>
+            <div className={`info ${status ? "completed" : ""}`}>
+                <div className='title'>{title}</div>
+                <div className='description'>{description}</div>
+            </div>
+            <div className='date'>{date}</div>
             <button>삭제</button>
         </div>
     );

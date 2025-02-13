@@ -1,14 +1,32 @@
 .Editor {
     display : flex;
+    flex-wrap: wrap;
     gap : 10px;
 }
 
 /* input 요소 css */
-.Editor input {
-    flex : 1; /* 1은 부모 요소에서 벗어나지 않는 범위 내에서 최대 크기로 나온다*/
+.Editor .Title {
+    display: flex;
+    flex : 1;
+}
+
+.Editor .Title input {
+    flex : 1; 
     padding: 15px;
     border: 1px solid rgb(220, 220, 220);
     border-radius: 5px;
+}
+
+.Editor .Content {
+    flex : 1 1 90%;
+}
+
+.Editor .Content input {
+    flex : 1; 
+    padding: 15px;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    width : 93%;
 }
 
 /* button 요소 css */

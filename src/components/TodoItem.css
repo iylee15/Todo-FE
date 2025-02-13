@@ -1,17 +1,27 @@
 .TodoItem {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid rgb(240, 240, 240);
+
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .TodoItem input {
     width: 20px;
 }
 
-.TodoItem .content {
-    flex: 1;
+.TodoItem .info {
+    display: flex;
+    text-align: left;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;  /* 남은 공간 차지 */
 }
 
 .TodoItem .date {
@@ -26,4 +36,23 @@
     border: none;
     border-radius: 5px;
     padding: 5px;
+}
+
+.TodoItem .title {
+    flex-basis: 30%;
+}
+
+.TodoItem .description {
+    flex-basis: 50%;
+    font-size: 14px;
+    color: #666;
+}
+
+.TodoItem .buttons {
+    flex-basis: 20%;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #666;
 }
