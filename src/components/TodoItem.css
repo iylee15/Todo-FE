@@ -59,16 +59,16 @@
 }
 
 .info.priority-1 {
-    border-left : 5px solid #ff4444;  /* 1순위: 빨간색 */
+    border-left : 5px solid #ff4444;  /* 1순위 */
     gap : 5px;
 }
 
 .info.priority-2 {
-    border-left: 5px solid #ffbb33;  /* 2순위: 주황색 */
+    border-left: 5px solid #ffbb33;  /* 2순위 */
 }
 
 .info.priority-3 {
-    border-left: 5px solid #00C851;  /* 3순위: 초록색 */
+    border-left: 5px solid #00C851;  /* 3순위 */
 }
 
 .info.priority-none {

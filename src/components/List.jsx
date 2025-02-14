@@ -20,6 +20,24 @@ const List = ({todos, onUpdate, onDelete}) => {
             filteredData = filteredData.filter((todo) => !todo.status);
         }
 
+        // 정렬
+        filteredData.sort((a, b) => {
+            // 우선순위 값 확인
+            if (a.priority === null && b.priority === null) {
+                return new Date(b.date) - new Date(a.date); // 날짜 비교
+            }
+            if(a.priority === null) return 1;
+            if(b.priority === null) return -1;
+            
+            // 우선순위 정렬
+            if(a.priority !== b.priority) {
+                return a.priority - b.priority;
+            }
+
+            // 우선순위가 같은 경우 
+            return new Date(b.date) - new Date(a.date);
+        });
+
         return filteredData;
     }
 
