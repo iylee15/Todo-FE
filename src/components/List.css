@@ -21,3 +21,14 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.List h4 {
+    text-align: left;
+}
+
+.List .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}

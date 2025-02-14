@@ -33,7 +33,7 @@ const fetchTodoList = async () => {
       case "INIT" : return action.data;
       case "CREATE" : return [action.data, ...state];
       case "UPDATE" : return state.map((todo)=>todo.todoSeq === action.targetId ? { ...todo, status : !todo.status } : todo);
-      case "DELETE" : return state.filter((todo)=>todo.id !== action.targetId);
+      case "DELETE" : return state.filter((todo)=>todo.todoSeq !== action.targetId);
     }
   }
 
@@ -50,16 +50,20 @@ const fetchTodoList = async () => {
       };
 
       const response = await axios.post("http://localhost:9000/todo", newTodo);
+      console.log(response);
 
       if (response.status === 200) {
         // 백엔드에서 생성된 todoSeq을 받아와 클라이언트 상태 업데이트
         const createdTodo = {
-          id: response.data.todoSeq, // 백엔드에서 생성된 ID 사용
+          todoSeq: response.data.todoSeq, // 백엔드에서 생성된 ID 사용
           status: response.data.status,
           title: content.title,
           description: content.description,
-          date: content.date
+          date: response.data.date,
+          priority: content.priority
         };
+
+        console.log(createdTodo);
 
         dispatch({
           type: "CREATE",
@@ -76,7 +80,6 @@ const fetchTodoList = async () => {
   // 수정하기
   const onUpdate = async (targetId) => {
     try {
-
       const response = await axios.get(`http://localhost:9000/todo/${targetId}`);
 
       if (response.status === 200) {
@@ -89,12 +92,22 @@ const fetchTodoList = async () => {
 
       
     } catch (error) {
-      console.error("Error 발생 : ", error)
+      console.error("Error 발생 : ", error);
     }
   }
 
-  const onDelete = async (content) => {
-    
+  const onDelete = async (targetId) => {
+    try{
+      const response = await axios.delete(`http://localhost:9000/todo/${targetId}`);
+      if (response.status === 200) {
+        dispatch({
+          type: "DELETE",
+          targetId: targetId
+        })
+      }
+    } catch (error) {
+      console.error("Error 발생 : ", error);
+    }
   }
 
   return (
