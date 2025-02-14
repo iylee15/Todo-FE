@@ -1,12 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 # Todo React 🗒️
 - 할 일을 기록하고 완료 여부를 체크할 수 있는 개인용 앱입니다.
 - 제목과 내용, 우선순위를 정해 기입할 수 있습니다.
@@ -27,26 +18,19 @@ Currently, two official plugins are available:
 
 
 ## 주력으로 사용한 컴포넌트 설명 및 사용 이유 📚
-#### 1
-  - ex
-  - ex
-  - ex
+#### Editor
+  - 등록할 할 일의 내용을 입력받는 컴포넌트
+  - 사용가자 입력한 제목, 내용, 우선순위 등의 값 관리에 useState를 사용하였으며 추가 버튼을 통해 백엔드에 할 일 등록 요청을 보냅니다.
+  - 함수 호출을 통해 등록 실행 후 입력 필드를 초기화하고 부모 컴포넌트에서 상태가 업데이트 되면서 전체 리스트가 갱신되도록 사용하였습니다.
 
-#### 2
-  - ex
-  - ex
+#### List
+  - 등록된 할 일의 목록을 화면에 출력하는 컴포넌트
+  - 할 일 목록의 필터, 검색 기능을 제공합니다.
+  - 검색어 입력 시 제목을 기준으로 필터링하며 '미완료 항목만 보기' 기능을 통해 완료되지 않은 항목만 표시할 수 있습니다.
+  - DB에 저장된 정보를 가져와 정렬 및 선택하여 출력할 수 있도록 컴포넌트를 사용하였습니다.
 
-#### 3
-  - ex
-  - ex
-
-#### 4
-  - ex
-  - ex
-  - ex
-  - ex
-
-#### 5
-  - ex
-  - ex
-  - ex
+#### TodoItem
+  - List 안에 포함된 할 일 하나의 정보를 가지고 있는 컴포넌트
+  - 제목, 설명, 상태, 우선순위, 등록 날짜 등을 표시합니다.
+  - 각 할 일의 정보를 개별적으로 표시하고 상태의 변경 및 삭제 기능을 제공합니다.
+  - 각 할 일 정보의 수정과 삭제를 용이하게 관리할 수 있도록 해당 컴포넌트를 사용하였습니다.
