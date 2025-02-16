@@ -7,8 +7,6 @@ import axios from 'axios';
 
 function App() {
 
-  // const todoList = axios.get("http://localhost:9000/todo");
-  // const mockData = todoList.data;
   let mockData = null;
 
   useEffect(()=>{
@@ -80,7 +78,7 @@ const fetchTodoList = async () => {
   // 수정하기
   const onUpdate = async (targetId) => {
     try {
-      const response = await axios.get(`http://localhost:9000/todo/${targetId}`);
+      const response = await axios.patch(`http://localhost:9000/todo/${targetId}`);
 
       if (response.status === 200) {
         // 백엔드에서 생성된 todoSeq을 받아와 클라이언트 상태 업데이트
